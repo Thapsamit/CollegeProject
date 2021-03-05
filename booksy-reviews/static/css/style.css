@@ -1,0 +1,692 @@
+/* FONTS AND TEXT STYLING */
+
+/* Import fonts */
+
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700|Parisienne|Alegreya:400,500&display=swap');
+
+/* Font settings */
+
+body,
+.user-reviews a,
+.profile-review-title a {
+    font-family: "Lato", sans-serif;
+    color: #373737;
+}
+
+.profile-review-title a {
+    font-weight: 100;
+    font-size: 1.2rem;
+}
+
+h3 {
+    font-family: "Alegreya", sans-serif;
+    font-weight: 500;
+}
+
+h4 {
+    font-family: "Alegreya", sans-serif;
+}
+
+.homepage-container h1 {
+    color: #bdaa6c;
+    font-family: "Parisienne", sans-serif;
+}
+
+/* Logo styling */
+
+.brand-logo {
+    font-family: "Parisienne", sans-serif;
+}
+
+nav .brand-logo {
+    font-size: 2.5rem;
+}
+
+/* Welcome section fort styling */
+
+.welcome-section p {
+    font-size: 1.2rem;
+}
+
+/* Break words in a card if too long */
+
+#card-container,
+#view-review-container p {
+    overflow-wrap: break-word;
+}
+
+/* Card title font size decreased */
+
+.card .card-title {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+/* Card comment font */
+
+#view-review-container p.comment-text {
+    font-size: 1.1rem;
+}
+
+#commented-by {
+    font-weight: 700;
+}
+
+/* Book info styling - collection */
+
+.book-info-container div {
+    font-size: 1.5rem;
+    font-weight: 300;
+}
+
+.book-info-container .title {
+    font-weight: 700;
+}
+
+#view-review-container p {
+    font-size: 1.3rem;
+    font-weight: 100;
+    padding-bottom: 10px;
+    margin: 0;
+}
+
+#view-review-container .author p {
+    font-weight: 400;
+}
+
+/* Style link in the login and register container */
+
+#login-container a,
+#register-container a {
+    color: #a99c72;
+    padding-left: 10px;
+}
+
+#login-container a:hover,
+#register-container a:hover {
+    text-decoration: underline;
+}
+
+/* Login and register form error messages */
+
+span.error-msg {
+    color: #e64a1e;
+    padding-left: 45px;
+    font-weight: 300;
+}
+
+#account-details>div {
+    font-size: 1.2rem;
+    font-weight: 100;
+}
+
+/* GENERAL PADDING AND MARGIN SETTING */
+
+/* Remove margin from rows */
+
+.row {
+    margin: 0;
+}
+
+/* Padding added to main to accomodate the skew navbar effect */
+
+main {
+    padding-top: 170px;
+}
+
+/* NAVBAR */
+
+/* Navbar gradient effect and skew shape. Tutorial used: https://css-tricks.com/creating-non-rectangular-headers/ */
+
+nav:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background-image: linear-gradient(90deg, #a99c72, #c0b283, #e4d29b);
+    transform: skewY(-4deg);
+    transform-origin: top left;
+}
+
+/* Navbar padding */
+
+nav .nav-wrapper {
+    padding: 0 30px;
+}
+
+/* SEARCH BAR*/
+
+/* Search bar box */
+
+.nav-wrapper .input-field input[type=search] {
+    background-color: #fff;
+    color: #373737;
+    height: 2rem;
+    width: calc(100% - 35px);
+    border-radius: 10px;
+    box-shadow: 2px 2px 3px 0px rgba(124, 114, 82, 0.95);
+    margin: 15px 0 0 0;
+    padding: 7px 0 7px 30px;
+}
+
+/* Place search icon inside the input box */
+
+.search-bar .input-field .prefix {
+    transform: translateY(9px) scale(0.9);
+    transform-origin: 0 0;
+}
+
+/* Remove border bottom and edit shadow */
+
+.search-bar input[type=search]:not(.browser-default):focus:not([readonly]) {
+    border-bottom: none;
+    box-shadow: 2px 2px 10px 2px rgba(124, 114, 82, 0.75)
+}
+
+/* Search icon color */
+
+.search-bar .input-field .prefix {
+    color: #a99c72;
+    padding-left: 10px;
+    padding-top: 7px;
+}
+
+/* Remove padding for search bar */
+
+#search-input-field,
+.search-bar .col {
+    padding: 0;
+}
+
+/* To fix issue with the placeholder on the Safari browser */
+
+.input-field input[type=search] {
+    line-height: initial;
+}
+
+/* TOAST MESSAGES */
+
+/* Fixes word breaks in toast messages */
+
+.toast-message {
+    word-break: normal !important;
+}
+
+/* Fix issue with the close button not being placed after the message */
+
+#toast-container>div {
+    display: block;
+}
+
+/* LOADING SPINNER */
+
+/* Overlay styled to dim the background for loader */
+
+#overlay {
+    z-index: 98;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, .5);
+}
+
+/* Position loader in the center */
+
+.preloader-wrapper {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+/* Set color for the loader */
+
+.spinner-layer {
+    border-color: #fff;
+}
+
+/* CONTAINERS */
+
+/* Update comment buttons container margin to prevent overlapping with character counter */
+
+.buttons-container {
+    margin: 10px 0;
+}
+
+/* Overlay created for forms and text in content-containers */
+
+.content-container {
+    background-color: rgba(228, 224, 211, 0.9);
+    padding: 20px 50px;
+    margin: 30px 0 100px;
+}
+
+/* Index page container settings and h1 styling */
+
+.homepage-container {
+    background-color: rgba(228, 224, 211, 0.8);
+    padding: 20px 50px;
+    margin: 30px 0 100px;
+}
+
+/* BUTTONS AND LINKS*/
+
+/* Button color changed from default to gold */
+
+.btn,
+.btn-large,
+.btn-small {
+    background-color: #c0b283;
+    margin: 20px 0;
+}
+
+/* Hover effect and focus color overwritting materialize default */
+
+.btn:focus,
+.btn-large:focus,
+.btn-small:focus,
+.btn:hover,
+.btn-large:hover,
+.btn-small:hover {
+    background-color: #a99c72;
+}
+
+/* Link hover effect. Source: https://codepen.io/jstn/pen/zuDst */
+
+.user-reviews a {
+    color: #373737;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 0.10em;
+
+    display: inline-block;
+    padding: 3px 12px;
+    position: relative;
+}
+
+.user-reviews a:after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    background: #373737;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+}
+
+.user-reviews a:hover:after {
+    width: 100%;
+    left: 0;
+}
+
+.profile-review-title a:hover {
+    color: #a99c72;
+}
+
+/* Update comment form buttons edit on focus state */
+
+button:focus,
+button,
+a#cancel {
+    background-color: transparent;
+    border: none;
+    text-transform: uppercase;
+}
+
+/* Card-action buttons + update comment buttons color styling and hover state */
+
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating),
+button#update,
+a#cancel {
+    color: #292826;
+}
+
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating):hover,
+button#update:hover,
+a#cancel:hover {
+    cursor: pointer;
+    color: #c0b283;
+}
+
+/* Show more / less link styling */
+
+a.show-more, a.show-less {
+    color: #f9a602;
+    cursor: pointer;
+    padding-bottom: 10px;
+}
+
+/* IMAGES */
+
+/* Set size for images in the collection page */
+
+.image-collection {
+    width: 100%;
+    height: 100%;
+    max-width: 250px;
+    max-height: 350px;
+}
+
+/* Make image smaller for the profile page display */
+
+.image-profile {
+    max-width: 50%;
+}
+
+/* Background photo for home page*/
+
+main {
+    background: url('../images/open-book.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* ACCODRION */
+
+/* Accordion header background color and font styling */
+
+.collapsible-header {
+    background-color: #dcd8ca;
+    border-bottom: 1px solid #b5b5b3;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #848482;
+}
+
+/* Collapsible margin increased */
+
+.collapsible {
+    margin: 1.5rem 0;
+}
+
+/* INPUT FIELDS */
+
+/* Style colors for form input fileds when active */
+
+input[type=text]:not(.browser-default):focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]),
+input[type=password]:not(.browser-default):focus:not([readonly]) {
+    border-bottom: 1px solid #a99c72;
+    box-shadow: none;
+}
+
+input[type=text]:not(.browser-default):focus:not([readonly])+label,
+textarea.materialize-textarea:focus:not([readonly])+label,
+.input-field label:not(.label-icon).active {
+    color: #a99c72;
+    font-size: 1.3rem;
+}
+
+.input-field .prefix.active,
+.dropdown-content li>span {
+    color: #a99c72;
+}
+
+/* Style comment textarea box */
+
+textarea.posted-textarea {
+    resize: none;
+}
+
+textarea.comments-textarea {
+    resize: none;
+    height: 7rem;
+    border: #d2d1d1 solid 1px;
+    background-color: #f5f5f5;
+    box-shadow: 2px 2px 3px 0px rgba(124, 114, 82, 0.95);
+    margin-top: 10px;
+}
+
+textarea.comments-textarea:focus:not([readonly]) {
+    border-bottom: none;
+    box-shadow: 2px 2px 10px 2px rgba(124, 114, 82, 0.75);
+    outline: none;
+}
+
+/* Add space between section heading and post comment */
+
+.insert-comment {
+    margin-top: 20px;
+}
+
+/* BACK TO BUTTON */
+
+/* Back to top button */
+
+.back-to-top-container {
+    background-color: #292826;
+    padding: 10px 0;
+}
+
+.back-to-top-container a {
+    color: #a99c72;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: letter-spacing 1.5s ease-in-out;
+}
+
+.back-to-top-container a:hover {
+    letter-spacing: 0.3em;
+    color: #fff;
+}
+
+/* THUMBS UP / DOWN */
+
+/* Adjust colors for thumbs up and thumbs down icons */
+
+.thumb-up {
+    color: #86a05c;
+    padding-left: 10px;
+    vertical-align: text-bottom;
+}
+
+.thumb-down {
+    color: #e64e64;
+    padding-left: 10px;
+    vertical-align: bottom;
+}
+
+/* Font size for votes on view review page */
+
+#view-votes-container {
+    font-size: 1.5rem;
+}
+
+/* Align text with icons */
+
+#view-votes-container span {
+    vertical-align: top;
+}
+
+/* COLLECTION PAGE AND SEARCH RESULTS SPACING */
+
+.collection-item {
+    padding: 15px 0;
+}
+
+.votes-container {
+    padding-top: 15px;
+}
+
+.votes-container i {
+    vertical-align: sub;
+}
+
+/* PROFILE PAGE SPACING */
+
+#profile-heading, #collection-heading {
+    padding-bottom: 15px;
+}
+
+#account-details,
+#tabs-container {
+    padding-top: 20px;
+}
+
+.tab-item>div:first-of-type {
+    padding-top: 15px;
+}
+
+.user-content-item {
+    padding: 10px 5px;
+}
+
+/* TABS */
+
+ul.tabs {
+    background-color: #c3bb9e;
+}
+
+.tabs .tab a {
+    color: #f7f5f5;
+    font-size: 16px;
+}
+
+.tabs .tab a.active,
+.tabs .tab a:hover {
+    color: #796a3b;
+}
+
+.tabs .indicator {
+    background-color: #796a3b;
+}
+
+.tab-item {
+    background-color: #f7f5f5a6;
+}
+
+/* CARD STYLING */
+
+/* Card background color set to the same as comment textarea */
+
+.card {
+    background-color: #f5f5f5;
+}
+
+.card .card-content {
+    padding: 18px;
+}
+
+.card .card-action {
+    padding: 5px 15px;
+}
+
+/* FOOTER */
+
+/* Footer gradient color effect */
+
+.page-footer {
+    background: linear-gradient(90deg, #a99c72, #c0b283, #e4d29b);
+    padding-top: 0;
+}
+
+/* Materialize sticky footer */
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+/* Footer link underline */
+
+.footer-copyright a:hover {
+    text-decoration: underline;
+}
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 750px) {
+
+    /* Image in collection view - size adjustment */
+    .image-collection {
+        width: 80%;
+        height: 80%;
+    }
+
+    /* Padding for content containers and main adjustment */
+    .content-container {
+        padding: 20px 20px;
+    }
+
+    main {
+        padding-top: 140px;
+    }
+
+    /* Book information font size adjustments */
+    .book-info-container .title, .book-info-container div {
+        font-size: 1.2rem;
+    }
+
+    /* Headings size adjustments on smaller displays */
+    h1 {
+        font-size: 3.5rem;
+    }
+
+    h2 {
+        font-size: 3rem;
+    }
+
+    h3 {
+        font-size: 2rem;
+    }
+
+    h4 {
+        font-size: 1.9rem;
+    }
+
+}
+
+@media only screen and (max-width: 420px) {
+
+    /* Image in collection view - size adjustment */
+    .image-collection {
+        width: 50%;
+        height: 50%;
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+
+    h2 {
+        font-size: 2.5rem;
+    }
+
+    h3 {
+        font-size: 2rem;
+    }
+
+    h4 {
+        font-size: 1.6rem;
+    }
+    
+    h5 {
+        font-size: 1.4rem;
+    }
+
+    .tabs .tab a {
+        font-size: 0.65rem;
+        padding: 0 3px;
+    }
+
+    /* Smaller font for titles in profile view */
+    .profile-review-title a {
+        font-size: 12px;
+    }
+}

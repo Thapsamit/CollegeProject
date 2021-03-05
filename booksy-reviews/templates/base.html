@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <!-- Generate title -->
+    {% if title %}
+    <title>Booksy - {{ title }}</title>
+    {% else %}
+    <title>Booksy</title>
+    {% endif %}
+
+    <!-- Load stylesheets -->
+    <link rel="icon" href="{{url_for('static', filename='favicons/favicon.png')}}" type="image/png" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css" />
+    
+    <!-- Toast mesages stylesheet -->
+    {{ toastr.include_toastr_css() }}
+    
+</head>
+
+<body>
+    
+    <!-- Loading spinner overlay -->
+    <div id="overlay">
+        
+        <!-- Loading spinner -->
+        <div class="preloader-wrapper big active">
+            <div class="spinner-layer">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <header>
+        
+        <!--Navbar -->
+        <nav>
+            
+            <!--Navbar options for authenticated user -->
+            {% if current_user.is_authenticated %}
+            
+            <div class="nav-wrapper row">
+                
+                <!-- Logo -->
+                <div class="col l3 s12"><a class="brand-logo" href="{{ url_for('index') }}">Booksy</a></div>
+                
+                <!-- Hamburger button -->
+                <div class="col l6 s12">
+                    
+                    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+
+                    <!-- Navbar for large displays -->
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li {%- if request.path == url_for('index') %} class="active"{% endif %}><a href="{{ url_for('index') }}">Home</a></li>
+                        <li {%- if request.path == url_for('show_collection') %} class="active"{% endif %}><a href="{{ url_for('show_collection') }}">Collection</a></li>
+                        <li {%- if request.path == '/add_review/' + current_user.username %} class="active"{% endif %}><a href="{{ url_for('add_review', username=current_user.username) }}">Add Review</a></li>
+                        <li {%- if request.path == '/user/' + current_user.username %} class="active"{% endif %}><a href="{{ url_for('profile', username=current_user.username) }}">Profile</a></li>
+                        <li {%- if request.path == url_for('logout') %} class="active"{% endif %}><a href="{{ url_for('logout') }}">Sign Out</a></li>
+                    </ul>
+                    
+                    <!-- Navbar for medium and small displays - sidenav -->
+                    <ul class="side-nav" id="mobile-demo">
+                        <li><a href="{{url_for('index')}}">Home</a></li>
+                        <li><a href="{{ url_for('show_collection') }}">Collection</a></li>
+                        <li><a href="{{ url_for('add_review', username=current_user.username) }}">Add Review</a></li>
+                        <li><a href="{{ url_for('profile', username=current_user.username) }}">Profile</a></li>
+                        <li><a href="{{ url_for('logout') }}">Sign Out</a></li>
+                    </ul>
+                    
+                </div>
+                
+                <!-- Search bar -->
+                <div class="col l3 s12 search-bar">
+                    
+                    <div class="row center search-bar">
+                        
+                        <form action="{{ url_for('search') }}" method="POST" class="col s12">
+                            <div class="row">
+                                <div class="col s12">
+                                    <div class="input-field" id="search-input-field">
+                                        <label for="search_input"><i class="material-icons prefix">search</i></label>
+                                        <input class="submit_on_enter" type="search" name="search_input" id="search_input" placeholder="Enter title, author or genre...">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        
+                    </div>
+                    
+                </div>
+                
+            </div>
+            
+            <!--Navbar options for non-authenticated user -->
+            {% else %}
+            
+            <div class="nav-wrapper">
+                
+                <!-- Logo -->
+                <a class="brand-logo" href="{{ url_for('index') }}">Booksy</a>
+                
+                <!-- Hamburger button -->
+                <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+                
+                <!-- Navbar for large displays -->
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li {%- if request.path == url_for('index') %} class="active"{% endif %}><a href="{{url_for('index')}}">Home</a></li>
+                    <li {%- if request.path == url_for('login') %} class="active"{% endif %}><a href="{{ url_for('login') }}">Sign In</a></li>
+                    <li {%- if request.path == url_for('register') %} class="active"{% endif %}><a href="{{ url_for('register') }}">Sign Up</a></li>
+                </ul>
+                
+                <!-- Navbar for medium and small displays -->
+                <ul class="side-nav" id="mobile-demo">
+                    <li><a href="{{ url_for('index') }}">Home</a></li>
+                    <li><a href="{{ url_for('login') }}">Sign In</a></li>
+                    <li><a href="{{ url_for('register') }}">Sign Up</a></li>
+                </ul>
+                
+            </div>
+            
+            {% endif %}
+            
+        </nav>
+        
+    </header>
+   
+   <!-- Content of other templates -->
+    <main>
+        <div class="container">
+            
+            {% block content %}  {% endblock %}
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="page-footer">
+        
+        <!-- Back to top -->
+        <div class="row center back-to-top-container">
+            
+            <div class="col s12">
+                <a href="#back-to-top">Back to Top</a>
+            </div>
+            
+        </div>
+        
+        <!-- Footer disclaimer -->
+        <div class="container">
+            
+            <div class="row">
+                
+                <div class="col l6 s12">
+                    <h5 class="white-text">Disclaimer</h5>
+                    <p class="grey-text text-lighten-4">For educational purposes only</p>
+                </div>
+                
+            </div>
+            
+        </div>
+        
+        <!-- Footer copyrights -->
+        <div class="footer-copyright">
+            
+            <div class="container">
+                &copy; 2019 JBroks. All rights reserved.
+                <a class="grey-text text-lighten-4 right" href="https://github.com/JBroks/booksy-reviews" target="_blank">GitHub</a>
+            </div>
+            
+        </div>
+        
+    </footer>
+
+    <!-- Loading scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    {{ toastr.message() }}
+    {{ toastr.include_toastr_js() }}
+    <script src="{{url_for('static', filename='js/libraries/sweetalert2.all.min.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script src="{{url_for('static', filename='js/script.js')}}"></script>
+    
+</body>
+
+</html>
